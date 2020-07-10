@@ -47,3 +47,45 @@ zod42 SELL BTCUSD 2 10001
 11431 BUY ETHUSD 4 175
 45691 BUY ETHUSD 3 180
 ```
+
+## Runtime Requirements
+
+Your submission must include a `Dockerfile` that can build and run your application.
+Your project must generate a binary that can accept input over stdin and write output to stdout.
+Any logging should use stderr so that we can discern it from the output.
+Executing `./run.sh` locally must launch this binary using Docker.
+The `./run.sh` file must be able to accept piped input.
+A barebones project has been provided for you that provides `./run.sh`, a `Dockerfile`, a `Makefile`, and a `main.cpp` which simply echos input.
+You are free to modify any of this project as you see fit as long as we are able to use `./run.sh` to build and run your application in Docker.
+You are not bound to use `FROM debian:10`, however you must use a base image that is available in [Docker Hub](https://hub.docker.com/).
+
+### Runtime Example
+
+```
+$ cat sample_input.txt | ./run.sh
+Sending build context to Docker daemon    128kB
+Step 1/3 : FROM debian:10
+ ---> 1b686a95ddbf
+Step 2/3 : RUN apt-get -y update   && apt-get -y install build-essential   && apt-get clean
+ ---> Using cache
+ ---> 165e5b61f3e9
+Step 3/3 : COPY src/ /app
+ ---> Using cache
+ ---> 6b73946bafbc
+Successfully built 6b73946bafbc
+Successfully tagged gemini_interview:latest
+mkdir -p build
+g++ -o build/match_engine main.cpp
+./build/match_engine
+
+====== Match Engine =====
+
+TRADE BTCUSD abe14 12345 5 10000
+TRADE BTCUSD abe14 13471 2 9971
+TRADE ETHUSD plu401 11431 5 175
+
+zod42 SELL BTCUSD 2 10001
+13471 BUY BTCUSD 4 9971
+11431 BUY ETHUSD 4 175
+45691 BUY ETHUSD 3 180
+```
