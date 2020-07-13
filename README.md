@@ -52,7 +52,7 @@ zod42 SELL BTCUSD 2 10001
 ## Submission Requirements
 
 Please submit an archived directory containing the following:
-1. All source code and any additional tooling required to build, compile, and test your submission 
+1. All source code and any additional tooling required to build, compile, and test your submission
 2. A `README.md` containing the following:
     - your name
     - instructions on how to build and run your application
@@ -77,20 +77,22 @@ If you would like to add logging to your application please use stderr so that w
 
 ```
 $ cat sample_input.txt | ./run.sh
-Sending build context to Docker daemon    128kB
-Step 1/3 : FROM debian:10
+Sending build context to Docker daemon  197.1kB
+Step 1/4 : FROM debian:10
  ---> 1b686a95ddbf
-Step 2/3 : RUN apt-get -y update   && apt-get -y install build-essential   && apt-get clean
+Step 2/4 : RUN apt-get -y update   && apt-get -y install build-essential   && apt-get clean
  ---> Using cache
  ---> 165e5b61f3e9
-Step 3/3 : COPY src/ /app
- ---> Using cache
- ---> 6b73946bafbc
-Successfully built 6b73946bafbc
-Successfully tagged gemini_interview:latest
+Step 3/4 : COPY src/ /app
+ ---> 1e03b684802c
+Step 4/4 : RUN cd /app && make build
+ ---> Running in c930e5aaa0e9
 mkdir -p build
 g++ -o build/match_engine main.cpp
-./build/match_engine
+Removing intermediate container c930e5aaa0e9
+ ---> 40ca2815137b
+Successfully built 40ca2815137b
+Successfully tagged gemini_interview:latest
 
 ====== Match Engine =====
 
