@@ -61,7 +61,7 @@ Please submit an archived directory containing the following:
 3. A `Dockerfile` that builds and runs your application
     - Please do not submit precompiled artifacts; your `Dockerfile` must compile your source code when building the container image
 
-Your submission should be functionally correct while also showcasing your knowledge of modern best practices in application development. Some relevant areas include developing with testings frameworks (like googletest or catch2), using automatic code formatters (like clang-format), and integrated static code analysis tooling (like clang-tidy).
+Your submission should be functionally correct while also showcasing your knowledge of modern best practices in application development. Some relevant areas include developing with testings frameworks (like `googletest` or `catch2`), using automatic code formatters (like `clang-format`), and integrated static code analysis tooling (like `clang-tidy`).
 
 ## Runtime Requirements
 
