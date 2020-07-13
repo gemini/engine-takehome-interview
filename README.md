@@ -2,7 +2,7 @@
 
 ## Prompt
 
-Your application is a matching engine that receives orders and continuously matches them to see if they can trade. Your application must be implemented in C++ and you should use a modern revision of the C++ standard (C++17).
+Your application is a matching engine that receives orders and continuously matches them to see if they can trade. Your application must be implemented in C++ and you should use a modern revision of the C++ standard (e.g., C++17).
 
 The orders that your matching engine shall receive are timestamped upon arrival. Orders are first ranked according to their price; orders of the same price are then ranked depending on the timestamp at entry.
 
