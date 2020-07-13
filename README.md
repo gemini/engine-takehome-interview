@@ -2,26 +2,26 @@
 
 ## Prompt
 
-Your application is a matching engine that receives orders and continuously matches them to see if they can trade.
-Orders are timestamped by their arrival time.
-Orders are first ranked according to their price; orders of the same price are then ranked depending on the timestamp at entry.
-Read orders from an input file using the format below and emit the trades.
-Print all remaining orders that didn’t fully trade after all input is read.
-Please note the streaming nature of this input and structure your program accordingly.
+Your application is a matching engine that receives orders and continuously matches them to see if they can trade. Your application must be implemented in C++ and you should use a modern revision of the C++ standard (C++17).
 
+The orders that your matching engine shall receive are timestamped upon arrival. Orders are first ranked according to their price; orders of the same price are then ranked depending on the timestamp at entry.
+
+Your application must read orders from stdin in the format described below. As your program reads the orders, it must emit any trades that result from the placement of an order. These trades shall be printed to stdout.
+
+Once the input stream is fully consumed, your application must print all remaining orders that did not fully trade. These orders must also be printed to stdout.
+
+Please note the streaming nature of this input and structure your program accordingly.
 
 ## Input Format
 
-Every line of input contains an order.
-The order consists of an `OrderID`, `Side`, `Instrument`, `Qty` and `Price`.
-The orders are listed in same order as the time of entry.
+Each order shall be delimitted by a new line. Each line consists of an order's `OrderID`, `Side`, `Instrument`, `Quantity` and `Price`, delimitted by a varying quantity of white space. The stream of orders are sequenced chronologically.
 
 ### Sample Input
 
 ```
 12345 BUY BTCUSD   5   10000
 zod42 SELL BTCUSD   2   10001
-13471 BUY BTCUSD .  6   9971
+13471 BUY BTCUSD   6   9971
 11431 BUY ETHUSD   9   175
 abe14 SELL BTCUSD   7   9800
 plu401 SELL ETHUSD   5   170
@@ -30,10 +30,11 @@ plu401 SELL ETHUSD   5   170
 
 ## Output Format
 
-Please output any trades that are possible in the following format:
+For each trade produced by your application, your application must print a string followed by a newline. This string must being with the word `TRADE` and be followed by the `Instrument`, `OrderID`, `ContraOrderID`, `Quantity`, and `Price` of the trade.
 
-The word `TRADE` followed by `Instrument`, `OrderID`, `ContraOrderID`, `Qty` and `Price`.
-At the end of reading input, please list all remaining orders in the same format as the entry: `OrderID`, `Side`, `Instrument`, `RemainingQty`, `Price`.
+Once the input stream is fully consumed, your application shall print all orders that remain on each side of every order book. The `SELL` side of each order book shall be printed first; the `BUY` side of each order book shall be printed last. For each side of every order book, orders shall be printed in the order in which they arrived.
+
+Please ensure that you leave exactly one line of whitespace between each portion of the requested output.
 
 ### Sample Output
 
@@ -48,16 +49,29 @@ zod42 SELL BTCUSD 2 10001
 45691 BUY ETHUSD 3 180
 ```
 
+## Submission Requirements
+
+Please submit an archived directory containing the following:
+1. All source code and any additional tooling required to build, compile, and test your submission 
+2. A `README.md` containing the following:
+    - your name
+    - instructions on how to build and run your application
+    - a decription of how you approached the problem
+    - how long much time you spent on this project
+3. A `Dockerfile` that builds and runs your application
+    - Please do not submit precompiled artifacts; your `Dockerfile` must compile your source code when building the container image
+
+Your submission should be functionally correct while also showcasing your knowledge of modern best practices in application development. Some relevant areas include developing with testings frameworks (like googletest or catch2), using automatic code formatters (like clang-format), and integrated static code analysis tooling (like clang-tidy).
+
 ## Runtime Requirements
 
-Your submission must include a `Dockerfile` that can build and run your application.
-Your project must generate a binary that can accept input over stdin and write output to stdout.
-Any logging should use stderr so that we can discern it from the output.
-Executing `./run.sh` locally must launch this binary using Docker.
-The `./run.sh` file must be able to accept piped input.
-A barebones project has been provided for you that provides `./run.sh`, a `Dockerfile`, a `Makefile`, and a `main.cpp` which simply echos input.
-You are free to modify any of this project as you see fit as long as we are able to use `./run.sh` to build and run your application in Docker.
-You are not bound to use `FROM debian:10`, however you must use a base image that is available in [Docker Hub](https://hub.docker.com/).
+Gemini's Engine Team has provided a barebones project that includes `./run.sh`, a `Dockerfile`, a `Makefile`, and a `main.cpp` which simply echos input. Executing `./run.sh` locally must build and launch a Docker image that defaults to running your application. The `./run.sh` file must accept piped input.
+
+You are free to modify any of this project as you see fit. However, you must provide a `./run.sh` that builds and runs your application in a Docker container. You are not bound to use `FROM debian:10`, however you must use a base image that is available in [Docker Hub](https://hub.docker.com/).
+
+If you would like to include tests with your submission, please provide a `./test.sh` that is similar to `./run.sh`.
+
+If you would like to add logging to your application please use stderr so that we can discern your log statements from the expected application output.
 
 ### Runtime Example
 
