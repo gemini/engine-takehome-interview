@@ -56,20 +56,22 @@ Please submit an archived directory containing the following:
 2. A `README.md` containing the following:
     - your name
     - instructions on how to build and run your application
-    - a decription of how you approached the problem
+    - a description of how you approached the problem
     - how long much time you spent on this project
-3. A `Dockerfile` that builds and runs your application
+3. A `run.sh` that builds a Docker image and runs your application 
     - Please do not submit precompiled artifacts; your `Dockerfile` must compile your source code when building the container image
+4. A `test.sh` that builds a Docker image and runs your tests 
+    - Similarly, please do not submit precompiled artifacts
 
-In addition to your submission being functionally correct you should also showcase your knowledge of modern best practices in application development. Some relevant areas include developing with testings frameworks (like `googletest` or `catch2`), using automatic code formatters (like `clang-format`), and integrating static code analysis tooling (like `clang-tidy`).
+It is of utmost importance that your submission is complete. All submissions lacking any of the above requirements will be rejected on the basis of being incomplete.
+
+You should also showcase your knowledge of modern best practices in application development. Some relevant areas include developing with testings frameworks (like `googletest` or `catch2`), using automatic code formatters (like `clang-format`), and integrating static code analysis tooling (like `clang-tidy`).
 
 ## Runtime Requirements
 
 Gemini's Engine Team has provided a barebones project that includes `./run.sh`, a `Dockerfile`, a `Makefile`, and a `main.cpp` which simply echos input. Executing `./run.sh` locally must build and launch a Docker image that defaults to running your application. The `./run.sh` file must accept piped input.
 
 You are free to modify any of this project as you see fit. However, you must provide a `./run.sh` that builds and runs your application in a Docker container. You are not bound to use `FROM debian:10`, however you must use a base image that is available in [Docker Hub](https://hub.docker.com/).
-
-If you would like to include tests with your submission, please provide a `./test.sh` that is similar to `./run.sh`.
 
 If you would like to add logging to your application please use stderr so that we can discern your log statements from the expected application output.
 
