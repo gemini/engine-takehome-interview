@@ -56,7 +56,7 @@ Please submit an archived directory containing the following:
 2. A `README.md` containing the following:
     - your name
     - instructions on how to build and run your application
-    - a decription of how you approached the problem
+    - a description of how you approached the problem
     - how long much time you spent on this project
 3. A `run.sh` that builds a Docker image and runs your application 
     - Please do not submit precompiled artifacts; your `Dockerfile` must compile your source code when building the container image
