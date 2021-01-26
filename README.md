@@ -30,7 +30,7 @@ plu401 SELL ETHUSD 5 170
 
 ## Output Format
 
-For each trade produced by your application, your application must print a string followed by a newline. This string must being with the word `TRADE` and be followed by the `Instrument`, `OrderID`, `ContraOrderID`, `Quantity`, and `Price` of the trade.
+For each trade produced by your application, your application must print a string followed by a newline. This string must begin with the word `TRADE` and be followed by the `Instrument`, `OrderID`, `ContraOrderID`, `Quantity`, and `Price` of the trade.
 
 Once the input stream is fully consumed, your application shall print all orders that remain on each side of every order book. The `SELL` side of each order book shall be printed first; the `BUY` side of each order book shall be printed last. For each side of every order book, orders shall be printed in the order in which they arrived. Note that arrival order is different from each order's price/time priority.
 
@@ -57,7 +57,7 @@ Please submit an archived directory containing the following:
     - your name
     - instructions on how to build and run your application
     - a description of how you approached the problem
-    - how long much time you spent on this project
+    - how much time you spent on this project
 3. A `run.sh` that builds a Docker image and runs your application 
     - Please do not submit precompiled artifacts; your `Dockerfile` must compile your source code when building the container image
 4. A `test.sh` that builds a Docker image and runs your tests 
