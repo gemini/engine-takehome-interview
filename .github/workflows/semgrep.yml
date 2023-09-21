@@ -1,0 +1,14 @@
+
+name: Semgrep
+on:
+  pull_request: {}
+  push:
+    branches:
+    - main
+  schedule:
+    - cron: 6 7 * * *
+  workflow_dispatch: {}
+jobs:
+  semgrep:
+    uses: gemini/semgrep/.github/workflows/semgrep-base.yml@main
+    secrets: inherit
